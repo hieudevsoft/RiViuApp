@@ -4,14 +4,14 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.model.BaseLogin
 import com.authencation.cloneriviu.support.Constants
 import com.authencation.cloneriviu.support.LoginResultClient
 import com.authencation.cloneriviu.support.LogoutResultClient
-import com.authencation.cloneriviu.viewmodels.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -32,9 +32,9 @@ class SignInWithGoogle private constructor() : BaseLogin {
         fun getInstance() = Holder.instance
     }
 
-    fun createRequest(activity: AppCompatActivity) {
+    fun createRequest(activity: Activity) {
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(Constants.clientGoogleId)
+            .requestIdToken(activity.getString(R.string.default_web_client_id))
             .requestEmail().build()
         googleSignInClient = GoogleSignIn.getClient(activity, gso)
     }
@@ -53,8 +53,9 @@ class SignInWithGoogle private constructor() : BaseLogin {
         context: Activity,
         data: Intent?
     ): LiveData<LoginResultClient<Boolean>?> {
-        var loginResult: MutableLiveData<LoginResultClient<Boolean>?>? = null
+        val loginResult = MutableLiveData<LoginResultClient<Boolean>?>()
         val signInGoogleTask = GoogleSignIn.getSignedInAccountFromIntent(data)
+        Log.d(TAG, "login: ${signInGoogleTask.result.toString()}")
         if (signInGoogleTask.isSuccessful) {
             val googleSingInAccount = signInGoogleTask.getResult(ApiException::class.java)
             googleSingInAccount.let {
@@ -65,22 +66,22 @@ class SignInWithGoogle private constructor() : BaseLogin {
                         context
                     ) { p0 ->
                         if (p0.isSuccessful) {
-                        loginResult?.value = LoginResultClient.Success(true)
+                        loginResult.value = LoginResultClient.Success(true)
                         } else {
-                            loginResult?.value = LoginResultClient.Error("Error",false)
+                            loginResult.value = LoginResultClient.Error("Error",false)
                         }
                     }
             }
         }else{
-            loginResult?.value = LoginResultClient.Error("Error",false)
+            loginResult.value = LoginResultClient.Error("Error Stranger",false)
         }
-        return loginResult as LiveData<LoginResultClient<Boolean>?>
+        return loginResult
     }
 
     override fun logout(context: Activity): LiveData<LogoutResultClient<Boolean>?> {
-        var logout : MutableLiveData<LogoutResultClient<Boolean>?>?=null
+        var logout = MutableLiveData<LogoutResultClient<Boolean>?>()
         val dialog = AlertDialog.Builder(context)
-        dialog.setTitle("Question ?");
+        dialog.setTitle("Question ?")
         dialog.setMessage("Do you want Sign Out?")
         dialog.setPositiveButton(
             "Yes"
@@ -90,16 +91,16 @@ class SignInWithGoogle private constructor() : BaseLogin {
             googleSignInClient.signOut().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     FirebaseAuth.getInstance().signOut()
-                    logout?.value = LogoutResultClient.Success(true)
+                    logout.value = LogoutResultClient.Success(true)
                 } else {
-                    logout?.value = LogoutResultClient.Error("Error Logout",false)
+                    logout.value = LogoutResultClient.Error("Error Logout",false)
                 }
             }
         }
         dialog.setNegativeButton("No") { _, _ ->logout?.value = LogoutResultClient.Error("Cancel Logout",false)
         }
         dialog.show()
-        return logout as LiveData<LogoutResultClient<Boolean>?>
+        return logout
     }
 
     fun checkLoginWithGoogle(context: Context): Boolean =
