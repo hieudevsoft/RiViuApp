@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.NotificationsFragment">
+
+        <include
+            android:id="@+id/layoutLogin"
+            layout="@layout/layout_login_present" />
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:padding="10dp"
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop"
+            android:background="@drawable/custom_button"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"
+            android:text="LOGOUT"
+            android:textSize="16sp" />
+
+
+    </FrameLayout>
+</layout>

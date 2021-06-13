@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeFragment"
+        android:title="Home"
+        android:enabled="true"
+        android:icon="@drawable/custom_ic_home"
+        />
+    <item android:id="@+id/reviewFragment"
+        android:title="Review"
+        android:enabled="true"
+        android:icon="@drawable/custom_ic_review"
+        />
+    <item android:id="@+id/addFragment"
+        android:title="Add"
+        android:enabled="true"
+        android:icon="@drawable/ic_add_selected"
+        />
+    <item android:id="@+id/notificationsFragment"
+        android:title="Notification"
+        android:enabled="true"
+        android:icon="@drawable/custom_ic_notification"
+        />
+    <item android:id="@+id/profileFragment"
+        android:title="Profile"
+        android:enabled="true"
+        android:icon="@drawable/custom_ic_profile"
+        />
+</menu>

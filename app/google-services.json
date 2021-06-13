@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "847237940060",
+    "project_id": "cloneriviu",
+    "storage_bucket": "cloneriviu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847237940060:android:0f5c2afda27b010f6fb799",
+        "android_client_info": {
+          "package_name": "com.authencation.cloneriviu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847237940060-3mmphreodsmo4osvcs3l5102j2489v6u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.authencation.cloneriviu",
+            "certificate_hash": "c38c0e355b2af9ed61c581908a4f1000ea94d1c7"
+          }
+        },
+        {
+          "client_id": "847237940060-okv7m1i6o19m4ctnjvvh1nls8e39ki5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7BLuXi0RxHv1ki4CLT1WYV-Qqu-MSDKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847237940060-okv7m1i6o19m4ctnjvvh1nls8e39ki5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

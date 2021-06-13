@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+    <LinearLayout
+        android:backgroundTint="@color/white"
+        android:padding="16dp"
+        android:background="@drawable/custom_bottomsheet"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_marginBottom="@dimen/marginTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.02"
+        android:text="Đăng nhập hoặc đăng ký"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_marginBottom="@dimen/marginTop"
+        android:layout_marginTop="@dimen/marginTop"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginFaceBook"
+        android:drawableLeft="@drawable/facebook"
+        android:layout_marginBottom="@dimen/marginTop"
+        android:layout_marginTop="@dimen/marginTop"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:text="Sử dụng tài khoản Facebook"
+        app:backgroundTint="@color/facebook"
+        android:background="@drawable/custom_button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginGoogle"
+        android:layout_marginBottom="@dimen/marginTop"
+        android:drawableLeft="@drawable/google"
+        android:layout_marginTop="@dimen/marginTop"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="false"
+        android:text="Sử dụng tài khoản Google"
+        android:textColor="@color/black"
+        app:backgroundTint="@null"
+        android:background="@drawable/custom_button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginNormal"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginBottom="@dimen/marginTop"
+        android:layout_marginTop="@dimen/marginTop"
+        android:textAllCaps="false"
+        android:text="Số điện thoại hoặc tên đăng nhập"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/gray"
+        android:background="@drawable/custom_button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
