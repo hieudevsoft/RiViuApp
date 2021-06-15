@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SignInWithFaceBook private constructor() : BaseLogin {
     lateinit var mCallBackManager: CallbackManager
+    lateinit var loginResultClient: MutableLiveData<LoginResultClient<Boolean>?>
     private object Holder {
         val instance: SignInWithFaceBook = SignInWithFaceBook()
     }
@@ -36,27 +37,26 @@ class SignInWithFaceBook private constructor() : BaseLogin {
     }
 
     override fun login(activity: Activity, data: Intent?): LiveData<LoginResultClient<Boolean>?> {
-        val loginResult = MutableLiveData<LoginResultClient<Boolean>?>()
+        loginResultClient = MutableLiveData<LoginResultClient<Boolean>?>()
         FacebookSdk.sdkInitialize(activity)
         mCallBackManager = CallbackManager.Factory.create()
              LoginManager.getInstance().loginBehavior = LoginBehavior.WEB_VIEW_ONLY
              LoginManager.getInstance().registerCallback(mCallBackManager, object :
                  FacebookCallback<LoginResult> {
                  override fun onSuccess(result: LoginResult?) {
-                     loginResult.value = LoginResultClient.Success(true)
                      Log.d(TAG, "onSuccess: SuccessFaceBook")
                      handlerFacebookToken(result?.accessToken)
                  }
 
                  override fun onCancel() {
-                     Log.d(TAG, "onSuccess: CancelFacebook")
-                     loginResult.value = LoginResultClient.Error("CANCEL REQUEST", false)
+                     Log.d(TAG, "onCancel: CancelFacebook")
+                     loginResultClient.value = LoginResultClient.Error("CANCEL REQUEST", false)
                  }
 
                  override fun onError(error: FacebookException?) {
                      if (error != null) {
-                         Log.d(TAG, "onSuccess: ErrorFacebook")
-                         loginResult.value = LoginResultClient.Error("Error: ${error.message}", false)
+                         Log.d(TAG, "onError: ErrorFacebook")
+                         loginResultClient.value = LoginResultClient.Error("Error: ${error.message}", false)
                      }
                  }
              })
@@ -64,15 +64,18 @@ class SignInWithFaceBook private constructor() : BaseLogin {
          LoginManager.getInstance()
              .logInWithReadPermissions(
                  activity,
-                 listOf("email", "public_profile", "user_friends")
+                 listOf("email", "public_profile")
              )
-        return loginResult
+        return loginResultClient
     }
 
     private fun handlerFacebookToken(accessToken: AccessToken?) {
         Log.d(TAG, "handlerFacebookToken: HandelToken $accessToken")
         val credential = FacebookAuthProvider.getCredential(accessToken?.token!!)
         FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+            if(it.isSuccessful){
+                loginResultClient.value = LoginResultClient.Success(true)
+            }else loginResultClient.value = LoginResultClient.Error("Error login firebase",false)
         }
     }
 

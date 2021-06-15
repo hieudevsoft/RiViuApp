@@ -104,7 +104,7 @@ class NotificationsFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListe
 
     }
 
-    override fun loginSuccess(state: Boolean) {
+    override fun onLoginFacebook(state: Boolean) {
         loginViewModel.didLoginSuccessFully.value = state
     }
 

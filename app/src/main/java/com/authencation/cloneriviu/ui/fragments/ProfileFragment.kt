@@ -1,5 +1,6 @@
 package com.authencation.cloneriviu.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,13 +20,15 @@ import com.authencation.cloneriviu.support.BottomSheetDialogLogin
 import com.authencation.cloneriviu.support.DataStoreLocal
 import com.authencation.cloneriviu.support.LogoutResultClient
 import com.authencation.cloneriviu.support.WidgetOwner
+import com.authencation.cloneriviu.ui.HomeScreen
 import com.authencation.cloneriviu.viewmodels.LoginViewModel
 import com.authencation.cloneriviu.viewmodels.factories.LoginViewModelsFactory
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class ProfileFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener {
+class ProfileFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener,HomeScreen.HomeScreenListener {
     private val TAG = "ProfileFragment"
     lateinit var dataStoreLocal: DataStoreLocal
     lateinit var _binding: FragmentProfileBinding
@@ -51,7 +54,7 @@ class ProfileFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener {
             loginBoxCreate()
         }
         binding.btnLogout.setOnClickListener {
-            dataStoreLocal.readOptionLogin.asLiveData().observeOnce(viewLifecycleOwner, { it ->
+            dataStoreLocal.readOptionLogin.asLiveData().observeOnce(viewLifecycleOwner, {
                 Log.d(TAG, "onViewCreated: Option Login: $it")
                 loginViewModel.createInstance(it)
                 loginViewModel.logout(requireActivity()).observe(viewLifecycleOwner, {
@@ -79,10 +82,16 @@ class ProfileFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener {
 
     private fun onSubscribes() {
         loginViewModel.getLoginSuccess().observe(viewLifecycleOwner, {
-            Toast.makeText(requireContext(), " Observe $it", Toast.LENGTH_SHORT).show()
+            Log.d(TAG, "onSubscribes: Already login app $it")
             if (it) {
+                Toast.makeText(requireContext(), "Hello : "+FirebaseAuth.getInstance().currentUser?.displayName, Toast.LENGTH_SHORT).show()
                 WidgetOwner.gone(binding.layoutLogin)
                 WidgetOwner.visibile(binding.btnLogout)
+                try {
+                    loginBox.dismiss()
+                }catch (e:Exception){
+
+                }
             } else {
                 WidgetOwner.gone(binding.btnLogout)
                 WidgetOwner.visibile(binding.layoutLogin)
@@ -104,9 +113,17 @@ class ProfileFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener {
 
     }
 
-    override fun loginSuccess(state: Boolean) {
+    override fun onLoginFacebook(state: Boolean) {
         loginViewModel.didLoginSuccessFully.value = state
     }
 
+    override fun onLoginGoogle(state: Boolean) {
+        loginViewModel.didLoginSuccessFully.value = state
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is HomeScreen) context.homeScreenListener = this
+    }
 
 }
