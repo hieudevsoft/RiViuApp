@@ -35,9 +35,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\activity', 'src\\main\\res\\layouts\\activity', 'src\\main\\res\\layouts\\fragments', 'src\\main\\res\\layouts\\item_layouts', 'src\\main\\res\\drawables\\icon_app', 'src\\main\\res\\drawables\\image_app', 'src\\main\\res\\drawables\\custom_app'
+            }
+        }
+    }
 }
 
 dependencies {
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.5.0'
