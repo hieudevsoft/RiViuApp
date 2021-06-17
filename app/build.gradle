@@ -38,7 +38,10 @@ android {
     sourceSets {
         main {
             res {
-                srcDirs 'src\\main\\res', 'src\\main\\res\\activity', 'src\\main\\res\\layouts\\activity', 'src\\main\\res\\layouts\\fragments', 'src\\main\\res\\layouts\\item_layouts', 'src\\main\\res\\drawables\\icon_app', 'src\\main\\res\\drawables\\image_app', 'src\\main\\res\\drawables\\custom_app', 'src\\main\\res\\drawables\\item_custom_apps'
+
+
+                srcDirs 'src\\main\\res', 'src\\main\\res\\activity', 'src\\main\\res\\layouts\\activity', 'src\\main\\res\\layouts\\fragments', 'src\\main\\res\\layouts\\item_layouts', 'src\\main\\res\\drawables\\icon_app', 'src\\main\\res\\drawables\\image_app', 'src\\main\\res\\drawables\\custom_app', 'src\\main\\res\\layouts\\layouts_item'
+
             }
         }
     }

@@ -11,10 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.databinding.ActivityHomeScreenBinding
-import com.authencation.cloneriviu.networks.NetworkConnecting
-import com.authencation.cloneriviu.networks.RepositoryLogin
-import com.authencation.cloneriviu.networks.SignInWithFaceBook
-import com.authencation.cloneriviu.networks.SignInWithGoogle
+import com.authencation.cloneriviu.networks.*
 import com.authencation.cloneriviu.receiver.NetworkReciever
 import com.authencation.cloneriviu.support.*
 import com.authencation.cloneriviu.viewmodels.LoginViewModel
@@ -70,48 +67,56 @@ class HomeScreen : AppCompatActivity(),NetworkReciever.OnNetworkChangeListener{
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         try {
-            when (loginViewModel.repository.loginInstance) {
-                is SignInWithGoogle -> {
-                    if (requestCode == Constants.LOGIN_GOOGLE && resultCode == RESULT_OK) {
-                        loginViewModel.login(this, data).observe(this, {
-                            Log.d(
-                                TAG,
-                                "controlEvent: ${loginViewModel.repository.loginInstance} ${SignInWithGoogle.getInstance()}"
-                            )
-                            when (it) {
-                                is LoginResultClient.Success -> {
-                                    Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT)
-                                        .show()
-                                    GlobalScope.launch(Dispatchers.IO) {
-                                        val dataStoreLocal = DataStoreLocal(this@HomeScreen)
-                                        dataStoreLocal.saveOptionLogin(2)
+            when(requestCode==Constants.GOOGLE_REQUEST_REQUEST){
+                true->if(resultCode!= RESULT_OK) Toast.makeText(this, "Please Install GPS", Toast.LENGTH_SHORT).show()
+                else{
+                    val googleApi = GoogleApi.getInstance()
+                    googleApi.activity = this
+                    googleApi.checkPreConditions()
+                }
+                false->when (loginViewModel.repository.loginInstance) {
+                    is SignInWithGoogle -> {
+                        if (requestCode == Constants.LOGIN_GOOGLE && resultCode == RESULT_OK) {
+                            loginViewModel.login(this, data).observe(this, {
+                                Log.d(
+                                    TAG,
+                                    "controlEvent: ${loginViewModel.repository.loginInstance} ${SignInWithGoogle.getInstance()}"
+                                )
+                                when (it) {
+                                    is LoginResultClient.Success -> {
+                                        Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT)
+                                            .show()
+                                        GlobalScope.launch(Dispatchers.IO) {
+                                            val dataStoreLocal = DataStoreLocal(this@HomeScreen)
+                                            dataStoreLocal.saveOptionLogin(2)
+                                        }
+                                        homeScreenListener.onLoginGoogle(true)
                                     }
-                                    homeScreenListener.onLoginGoogle(true)
+                                    is LoginResultClient.Error -> {
+                                        homeScreenListener.onLoginGoogle(false)
+                                        Log.d(TAG, "show: ${it.message}")
+                                        Toast.makeText(
+                                            this@HomeScreen,
+                                            "Login Failure",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                    else -> Log.d(TAG, "show: Error stranger")
                                 }
-                                is LoginResultClient.Error -> {
-                                    homeScreenListener.onLoginGoogle(false)
-                                    Log.d(TAG, "show: ${it.message}")
-                                    Toast.makeText(
-                                        this@HomeScreen,
-                                        "Login Failure",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                                else -> Log.d(TAG, "show: Error stranger")
-                            }
-                        })
-                        Log.d(TAG, "onActivityResult: Login with Google")
+                            })
+                            Log.d(TAG, "onActivityResult: Login with Google")
+                        }
                     }
+                    is SignInWithFaceBook -> {
+                        SignInWithFaceBook.getInstance().mCallBackManager.onActivityResult(
+                            requestCode,
+                            resultCode,
+                            data
+                        )
+                        Log.d(TAG, "onActivityResult: Login with FaceBook")
+                    }
+                    else -> Log.d(TAG, "onActivityResult: Login with Others Option")
                 }
-                is SignInWithFaceBook -> {
-                    SignInWithFaceBook.getInstance().mCallBackManager.onActivityResult(
-                        requestCode,
-                        resultCode,
-                        data
-                    )
-                    Log.d(TAG, "onActivityResult: Login with FaceBook")
-                }
-                else -> Log.d(TAG, "onActivityResult: Login with Others Option")
             }
 
         } catch (e: Exception) {

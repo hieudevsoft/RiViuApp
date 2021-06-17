@@ -14,18 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CloneRiviu"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".activityempty" />
         <activity android:name=".ui.HomeScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.onboarding_screen" />
-        <activity android:name=".ui.StartedScreen" />
+        <activity android:name=".ui.StartedScreen" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <receiver android:name=".receiver.NetworkReciever" />
 
         <meta-data

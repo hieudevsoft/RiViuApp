@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.databinding.FragmentProfileBinding
 import com.authencation.cloneriviu.extensions.observeOnce
+import com.authencation.cloneriviu.networks.GoogleApi
 import com.authencation.cloneriviu.networks.RepositoryLogin
 import com.authencation.cloneriviu.support.BottomSheetDialogLogin
 import com.authencation.cloneriviu.support.DataStoreLocal
@@ -30,6 +31,7 @@ import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener,HomeScreen.HomeScreenListener {
     private val TAG = "ProfileFragment"
+    private lateinit var googleApi: GoogleApi
     lateinit var dataStoreLocal: DataStoreLocal
     lateinit var _binding: FragmentProfileBinding
     lateinit var loginViewModel: LoginViewModel
@@ -45,12 +47,16 @@ class ProfileFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener,Ho
             ViewModelProvider(this, LoginViewModelsFactory(RepositoryLogin.getInstance())).get(
                 LoginViewModel::class.java
             )
+        googleApi = GoogleApi.getInstance()
+        googleApi.activity = requireActivity()
         onSubscribes()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.layoutLogin.findViewById<Button>(R.id.btnLogin).setOnClickListener {
+            googleApi.checkPreConditions()
+            if(GoogleApi.check)
             loginBoxCreate()
         }
         binding.btnLogout.setOnClickListener {

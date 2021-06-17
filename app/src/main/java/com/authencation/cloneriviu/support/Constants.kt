@@ -4,7 +4,7 @@ object Constants {
     const val TABLE_OLD_CURRENT_LOCATION = "tbOldLocation"
     const val DB_OLD_CURRENT_LOCATION = "DBLocation"
     const val LOGIN_GOOGLE = 1307
-
+    const val GOOGLE_REQUEST_REQUEST = 1102
     const val  PREFERENCES_NAME = "myPref"
     const val PREFERENCES_NAME_LOCATION ="nameLocation"
     const val PREFERENCES_LOGIN_OPTION ="optionLogin"
