@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:weightSum="100"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Thông báo"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/text_thongbao"/>
+    <com.airbnb.lottie.LottieAnimationView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="24dp"
+        app:lottie_rawRes="@raw/btn_setting"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@id/text_thongbao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/view_blank"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Cũ hơn"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_blank"
+        android:id="@+id/text_cuhon"/>
+    <com.todkars.shimmer.ShimmerRecyclerView
+        app:shimmer_recycler_item_count="5"
+        app:shimmer_recycler_clip_to_children="true"
+        app:shimmer_recycler_auto_start="true"
+        app:shimmer_recycler_duration="1000"
+        app:shimmer_recycler_repeat_mode="restart"
+        app:shimmer_recycler_direction="top_to_bottom"
+        app:layout_constraintTop_toBottomOf="@id/text_cuhon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
