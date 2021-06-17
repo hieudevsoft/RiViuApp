@@ -11,15 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragments.NotificationsFragment"
-        android:padding="10dp">
+       >
 
         <include
             android:id="@+id/layoutLogin"
-            layout="@layout/layout_login_present"
-            android:visibility="invisible"/>
-
+            layout="@layout/layout_login_present" />
         <Button
-            android:visibility="gone"
             android:layout_gravity="center"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
@@ -32,7 +29,8 @@
             android:textColor="@color/white"
             android:fontFamily="sans-serif-medium"
             android:text="LOGOUT"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            />
 
             <include
                 android:visibility="gone"

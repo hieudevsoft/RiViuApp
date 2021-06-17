@@ -196,6 +196,10 @@
                         app:shimmer_recycler_layout="@layout/shimmer_layout_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/viewPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
                     </LinearLayout>
                 </ScrollView>
             </androidx.constraintlayout.widget.ConstraintLayout>

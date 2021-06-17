@@ -38,7 +38,7 @@ android {
     sourceSets {
         main {
             res {
-                srcDirs 'src\\main\\res', 'src\\main\\res\\activity', 'src\\main\\res\\layouts\\activity', 'src\\main\\res\\layouts\\fragments', 'src\\main\\res\\layouts\\item_layouts', 'src\\main\\res\\drawables\\icon_app', 'src\\main\\res\\drawables\\image_app', 'src\\main\\res\\drawables\\custom_app', 'src\\main\\res\\layouts\\layouts_item'
+                srcDirs 'src\\main\\res', 'src\\main\\res\\activity', 'src\\main\\res\\layouts\\activity', 'src\\main\\res\\layouts\\fragments', 'src\\main\\res\\layouts\\item_layouts', 'src\\main\\res\\drawables\\icon_app', 'src\\main\\res\\drawables\\image_app', 'src\\main\\res\\drawables\\custom_app', 'src\\main\\res\\layouts\\layouts_item', 'src\\main\\res\\layouts\\fragments\\home'
             }
         }
     }
@@ -111,6 +111,7 @@ dependencies {
     // Coordinator Layout
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
 
-
+    //Transform ViewPager
+    implementation 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:2.0.24'
 
 }

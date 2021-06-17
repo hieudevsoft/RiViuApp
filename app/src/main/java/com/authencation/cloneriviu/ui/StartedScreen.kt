@@ -14,7 +14,7 @@ class StartedScreen : AppCompatActivity() {
         setContentView(R.layout.started_layout)
         Support.setFlagFullScreen(window)
         Handler(Looper.getMainLooper()).postDelayed({
-            Intent(this,onboarding_screen::class.java).also {
+            Intent(this,OnboardingScreen::class.java).also {
                 startActivity(it)
             }
             overridePendingTransition(R.anim.anim_from_right, R.anim.anim_from_left)

@@ -17,7 +17,7 @@
         <activity android:name=".ui.HomeScreen">
 
         </activity>
-        <activity android:name=".ui.onboarding_screen" />
+        <activity android:name=".ui.OnboardingScreen" />
         <activity android:name=".ui.StartedScreen" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

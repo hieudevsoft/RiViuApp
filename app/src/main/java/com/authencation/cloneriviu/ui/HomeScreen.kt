@@ -62,7 +62,7 @@ class HomeScreen : AppCompatActivity(),NetworkReciever.OnNetworkChangeListener{
     }
 
     override fun onNetworkChange(state: Boolean) {
-    WidgetOwner.makeSnackbar(binding.navigationBottom,state)
+    WidgetOwner.makeSnackbarInternet(binding.navigationBottom,state)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

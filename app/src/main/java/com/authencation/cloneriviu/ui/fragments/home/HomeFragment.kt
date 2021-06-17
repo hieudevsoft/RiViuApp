@@ -1,4 +1,4 @@
-package com.authencation.cloneriviu.ui.fragments
+package com.authencation.cloneriviu.ui.fragments.home
 
 import android.os.Bundle
 import android.os.Handler
@@ -12,9 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ToxicBakery.viewpager.transforms.CubeOutTransformer
+import com.ToxicBakery.viewpager.transforms.RotateUpTransformer
 import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.adapters.ItemOptionsAdapter
 import com.authencation.cloneriviu.adapters.ItemOptionsTwoAdapter
+import com.authencation.cloneriviu.adapters.ViewPagerAdapter
 import com.authencation.cloneriviu.databinding.FragmentHomeBinding
 import com.authencation.cloneriviu.receiver.NetworkReciever
 import com.authencation.cloneriviu.support.DataStoreLocal
@@ -28,6 +31,7 @@ class HomeFragment : Fragment() {
     lateinit var itemOptionsAdapter: ItemOptionsAdapter
     lateinit var itemOptionsTwoAdapter: ItemOptionsTwoAdapter
     lateinit var dataStoreLocal: DataStoreLocal
+    lateinit var viewPagerAdapter: ViewPagerAdapter
     private val binding get() = _binding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +43,7 @@ class HomeFragment : Fragment() {
             binding?.location = it
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
-
+        viewPagerAdapter = ViewPagerAdapter(requireContext())
         return binding?.root
     }
 
@@ -51,6 +55,7 @@ class HomeFragment : Fragment() {
         initOptionsTwo()
         controlRefreshLayout()
         openSearchLocations()
+        initViewPager()
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -77,7 +82,7 @@ class HomeFragment : Fragment() {
         _binding = null
         super.onDestroy()
     }
-    fun controlRefreshLayout(){
+    private fun controlRefreshLayout(){
         binding?.refreshLayout?.setColorSchemeColors(context?.getColor(R.color.orange)!!)
         binding?.refreshLayout?.setOnRefreshListener {
             Handler(Looper.getMainLooper()).postDelayed({
@@ -89,7 +94,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun visibleItem(){
+    private fun visibleItem(){
         binding?.shimmerHeader?.visibility = View.GONE
         binding?.containerMember?.let { WidgetOwner.visibile(it) }
         binding?.containerChooseAddress?.let { WidgetOwner.visibile(it) }
@@ -97,23 +102,26 @@ class HomeFragment : Fragment() {
         binding?.imgMemberShip?.let { WidgetOwner.visibile(it) }
     }
 
-    fun initOptionsOne(){
+    private fun initOptionsOne(){
         itemOptionsAdapter = ItemOptionsAdapter()
         binding?.shimmerOptionsOne?.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         binding?.shimmerOptionsOne?.adapter = itemOptionsAdapter
         binding?.shimmerOptionsOne?.showShimmer()
     }
 
-    fun initOptionsTwo(){
+    private fun initOptionsTwo(){
         itemOptionsTwoAdapter = ItemOptionsTwoAdapter()
         binding?.shimmerOptionsTwo?.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         binding?.shimmerOptionsTwo?.adapter = itemOptionsTwoAdapter
         binding?.shimmerOptionsTwo?.showShimmer()
     }
-
-    fun openSearchLocations(){
+    private fun openSearchLocations(){
         binding?.containerChooseAddress?.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchLocationFragment)
         }
+    }
+    private fun initViewPager(){
+       binding?.viewPager?.adapter = viewPagerAdapter
+       binding?.viewPager?.setPageTransformer(true,CubeOutTransformer(),0)
     }
 }
