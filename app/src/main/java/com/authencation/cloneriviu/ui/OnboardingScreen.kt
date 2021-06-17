@@ -6,14 +6,14 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.adapters.SliderOnboardingAdapter
 import com.authencation.cloneriviu.databinding.ActivityOnboardingScreenBinding
 import com.authencation.cloneriviu.model.BottomSheetFactory
+import com.authencation.cloneriviu.networks.GoogleApi
 import com.authencation.cloneriviu.networks.SignInWithFaceBook
-import com.authencation.cloneriviu.support.BottomSheetDialogLogin
-import com.authencation.cloneriviu.support.LoginResultClient
-import com.authencation.cloneriviu.support.Support
+import com.authencation.cloneriviu.support.*
 import com.facebook.*
 import com.facebook.appevents.AppEventsLogger
 import com.facebook.appevents.AppEventsLogger.activateApp
@@ -28,15 +28,20 @@ class onboarding_screen : AppCompatActivity() {
     lateinit var _binding :ActivityOnboardingScreenBinding
     lateinit var sliderOnboardingAdapter: SliderOnboardingAdapter
     lateinit var loginBox : BottomSheetDialogLogin
+    lateinit var googleApi: GoogleApi
     private val binding get() = _binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityOnboardingScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Support.setFlagFullScreen(window)
+        googleApi = GoogleApi.getInstance()
+        googleApi.activity = this
         initSliderView()
         binding.btnLogin.setOnClickListener {
-            openBottomSheetLogin()
+            googleApi.checkPreConditions()
+            if(GoogleApi.check) openBottomSheetLogin()
+
         }
         binding.tvLater.setOnClickListener {
             Intent(this,HomeScreen::class.java).also {
@@ -61,5 +66,21 @@ class onboarding_screen : AppCompatActivity() {
         binding.sliderView.setSliderAdapter(sliderOnboardingAdapter,true)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when(requestCode== Constants.GOOGLE_REQUEST_REQUEST) {
+            true -> if (resultCode != RESULT_OK) Toast.makeText(
+                this,
+                "Please Install GPS",
+                Toast.LENGTH_SHORT
+            ).show()
+            else {
+                googleApi.checkPreConditions()
+            }
+            false -> {
+                Toast.makeText(this, "An occurring while starting Application", Toast.LENGTH_SHORT).show()
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 
 }
