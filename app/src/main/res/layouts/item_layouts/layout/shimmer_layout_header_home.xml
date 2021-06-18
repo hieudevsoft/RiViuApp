@@ -27,7 +27,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="@dimen/marginTop"
+        android:layout_marginTop="@dimen/margin"
         android:background="@drawable/custom_search_box"
         android:gravity="center|left"
         android:orientation="horizontal"

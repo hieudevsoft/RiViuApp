@@ -21,7 +21,7 @@
             android:id="@+id/lyHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginTop"
+            android:layout_marginBottom="@dimen/margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -46,7 +46,7 @@
             android:id="@+id/lyBoxSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marginTop"
+            android:layout_marginTop="@dimen/margin"
             android:gravity="center|start"
             android:orientation="horizontal"
             android:weightSum="10"
@@ -95,7 +95,7 @@
             android:layout_width="0dp"
             app:layout_constraintVertical_bias="0"
             android:layout_height="0sp"
-            android:layout_marginTop="@dimen/marginTop"
+            android:layout_marginTop="@dimen/margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/lyBoxSearch"
             app:layout_constraintStart_toStartOf="@id/lyBoxSearch"
@@ -111,8 +111,8 @@
                     android:fontFamily="sans-serif-black"
                     android:textSize="18sp"
                     android:text="Đã chọn gần đây"
-                    android:paddingTop="@dimen/marginTop"
-                    android:paddingBottom="@dimen/marginTop"
+                    android:paddingTop="@dimen/margin"
+                    android:paddingBottom="@dimen/margin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -123,7 +123,7 @@
 
                 <View
                     android:alpha="0.05"
-                    android:layout_marginTop="@dimen/marginTop"
+                    android:layout_marginTop="@dimen/margin"
                     android:background="@color/gray_black"
                     android:layout_width="match_parent"
                     android:layout_height="8dp" />
@@ -133,7 +133,7 @@
                     android:fontFamily="sans-serif-black"
                     android:textSize="18sp"
                     android:text="Địa điểm phổ biến"
-                    android:paddingTop="@dimen/marginTop"
+                    android:paddingTop="@dimen/margin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

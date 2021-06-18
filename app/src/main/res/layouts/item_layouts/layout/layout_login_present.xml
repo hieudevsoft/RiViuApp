@@ -17,7 +17,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginTop"
+        android:layout_marginTop="@dimen/margin"
         android:background="@drawable/custom_button"
         android:textColor="@color/white"
         android:fontFamily="sans-serif-medium"
