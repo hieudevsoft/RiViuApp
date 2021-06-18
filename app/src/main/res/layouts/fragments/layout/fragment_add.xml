@@ -1,14 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.AddFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.AddFragment"
+    android:padding="16dp"
+    android:fontFamily="sans-serif-medium">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ImageButton
+        android:clickable="true"
+        android:id="@+id/btnAddBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@null"
+        android:src="@drawable/ic_back" />
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/custom_background_layout_add"
+        android:text="Đăng bài"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnPost"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:padding="10dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/addMedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <LinearLayout
+                    android:clickable="true"
+                    android:id="@+id/addPicture"
+                    android:layout_width="@dimen/custom_pic_size"
+                    android:layout_height="@dimen/custom_pic_size"
+                    android:background="@drawable/custom_background_layout_add"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_add_photo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Thêm hình"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:clickable="true"
+                    android:id="@+id/addVideo"
+                    android:layout_width="@dimen/custom_pic_size"
+                    android:layout_height="@dimen/custom_pic_size"
+                    android:background="@drawable/custom_background_layout_add"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintStart_toEndOf="@+id/addPicture"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:layout_width="@dimen/picture_size"
+                        android:layout_height="@dimen/picture_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_add_video" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Thêm video"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:clickable="true"
+                    android:id="@+id/youtube"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_toEndOf="@+id/addVideo"
+                    android:background="@drawable/custom_background_layout_add"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.13"
+                    app:layout_constraintStart_toEndOf="@+id/addVideo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:layout_width="@dimen/picture_size"
+                        android:layout_height="@dimen/picture_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_youtube" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Youtube"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:id="@+id/addContent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/content_size_big"
+                android:layout_below="@+id/addMedia"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@drawable/custom_background_layout_add2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Tittle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:hint=" Nhập tiêu đề cho Riviu của bạn "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/ContentR"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/content_size_small"
+                    android:layout_below="@+id/Tittle"
+                    android:layout_marginTop="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:hint=" Bạn có gì muốn Riviu nào "
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin"
+                        android:gravity="end"
+                        android:text="Nội dung không quá 200000 ký tự"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ContentR"
+                    android:layout_marginTop="0dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint=" + Thêm hashtag"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/addLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addContent"
+                android:layout_marginTop="@dimen/margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa điểm"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/picture_size"
+                    android:layout_marginTop="@dimen/margin"
+                    android:background="@drawable/custom_background_layout_add2"
+                    android:drawableLeft="@drawable/ic_lcoation"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:text="Nhấn vào để chọn địa điểm"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addLocation"
+                android:layout_marginTop="@dimen/margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đánh giá"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Tổng thể:"
+                        android:textSize="16sp" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="80dp"
+                        android:layout_toStartOf="@+id/statusRating"
+                        android:isIndicator="false"
+                        android:numStars="5"
+                        android:stepSize="1.0"
+                        android:clickable="true"
+                        android:progressTint="@color/orange"/>
+
+                    <TextView
+                        android:id="@+id/statusRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/margin"
+                        android:text="status rating"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
