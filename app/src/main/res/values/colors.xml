@@ -12,4 +12,9 @@
     <color name="gray_black">#DC595755</color>
     <color name="facebook">#244698</color>
     <color name="star">#ffff00</color>
+    <color name="light_gray">#F2F2F2</color>
+    <color name="text_gray">#6B6B6B</color>
+    <color name="blue">#0068FF</color>
+    <color name="bold_orange">#DC7C43</color>
+
 </resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:padding="10dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        >
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back"
+            />
+            <Button
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintWidth_percent="0.18"
+                app:layout_constraintHeight_percent="0.4"
+                android:background="@drawable/custom_button_next"
+                android:text="Tiếp theo"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="@color/text_gray"
+                >
+            </Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:id="@+id/blank_sdt">
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại của tôi là"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:id="@+id/text_sdt"/>
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_sdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chúng tôi sẽ gửi số điện thoại cùng mã xác thực"
+            android:id="@+id/text_sdt2"/>
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_sdt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="qua số điện thoại của bạn"
+            android:id="@+id/text_sdt3"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+        <EditText
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:hint="Ví dụ: 0909 123 123"
+            android:textColor="@color/text_gray"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:background="@drawable/custom_button_next"
+        android:backgroundTint="@color/blue"
+        android:text="Gửi mã xác thực qua tin nhắn SMS"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textAllCaps="false"/>
+
+
+</LinearLayout>
