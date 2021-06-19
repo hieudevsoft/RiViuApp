@@ -2,7 +2,7 @@
 <resources>
     <dimen name="margin">10dp</dimen>
     <dimen name="picture_size">50dp</dimen>
-    <dimen name="custom_pic_size">50dp</dimen>
+    <dimen name="custom_pic_size">100dp</dimen>
     <dimen name="content_size_small">250dp</dimen>
     <dimen name="content_size_big">350dp</dimen>
 
