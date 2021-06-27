@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.authencation.cloneriviu.adapters.ItemOldLocationAdapter
-import com.authencation.cloneriviu.adapters.ItemPopularAddressAdapter
+import com.authencation.cloneriviu.adapters.Items.ItemOldLocationAdapter
+import com.authencation.cloneriviu.adapters.Items.ItemPopularAddressAdapter
 import com.authencation.cloneriviu.bussiness_logics.SearchLocation
 import com.authencation.cloneriviu.database.CurrentLocationDatabases
 import com.authencation.cloneriviu.databinding.FragmentSearchLocationBinding

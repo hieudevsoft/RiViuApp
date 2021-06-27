@@ -7,19 +7,25 @@
         <variable
             name="location"
             type="java.lang.String" />
+        <variable
+            name="isCheckedExplore"
+            type="java.lang.Boolean" />
+        <variable
+            name="isCheckedFollow"
+            type="java.lang.Boolean" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        android:layout_marginBottom="?attr/actionBarSize"
         tools:context=".HomeFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -110,7 +116,8 @@
                         android:textColor="@color/gray_black" />
                 </LinearLayout>
 
-                <ScrollView
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="@dimen/marginTop"
@@ -125,8 +132,7 @@
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
+                        android:layout_height="0dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="30dp">
@@ -161,7 +167,6 @@
                             app:shimmer_recycler_layout="@layout/shimmer_layout_options"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
-
                         <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="30dp">
@@ -196,12 +201,70 @@
                         app:shimmer_recycler_layout="@layout/shimmer_layout_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+                        <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <FrameLayout
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                            <TextView
+                                android:textAlignment="center"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:padding="@dimen/marginEnd"
+                                android:textColor="@color/gray_black"
+                                android:textSize="16sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Khám phá"
+                                android:id="@+id/tvExplore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                                <View
+                                    visibilityDot="@{isCheckedExplore}"
+                                    android:id="@+id/view_dot_explore"
+                                    android:layout_gravity="right|top"
+                                    android:background="@drawable/custom_dot"
+                                    android:layout_width="5dp"
+                                    android:layout_height="5dp"/>
+                            </FrameLayout>
+                            <Space
+                                android:layout_width="@dimen/marginEnd"
+                                android:layout_height="wrap_content"/>
+                            <FrameLayout
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/gray_black"
+                                    android:padding="@dimen/marginEnd"
+                                    android:textSize="16sp"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:text="Theo dõi"
+                                    android:id="@+id/tvFollow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <View
+                                    visibilityDot="@{isCheckedFollow}"
+                                    android:id="@+id/view_dot_follow"
+                                    android:layout_gravity="right|top"
+                                    android:background="@drawable/custom_dot"
+                                    android:layout_width="5dp"
+                                    android:layout_height="5dp"/>
+                            </FrameLayout>
+                        </LinearLayout>
                         <androidx.viewpager.widget.ViewPager
                             android:id="@+id/viewPager"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
-                </ScrollView>
+                </androidx.core.widget.NestedScrollView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </FrameLayout>

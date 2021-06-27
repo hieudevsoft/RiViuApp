@@ -2,6 +2,7 @@ package com.authencation.cloneriviu.support
 
 import android.os.Build
 import android.view.*
+import android.widget.TextView
 import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.model.ItemOptionsOne
 import com.authencation.cloneriviu.model.ItemOptionsTwo
@@ -67,4 +68,12 @@ object Support {
         }
         menu.setGroupCheckable(0, true, true)
     }
+    fun setPresentTextView(textView:TextView,scale:Float,textColor: Int){
+        textView.let {
+            it.scaleX = scale
+            it.scaleY = scale
+            it.setTextColor(textColor)
+        }
+    }
+
 }

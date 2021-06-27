@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
-//    id 'androidx.navigation.safeargs.kotlin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -114,4 +114,7 @@ dependencies {
     //Transform ViewPager
     implementation 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:2.0.24'
 
+    //SmartTabLayout
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
 }

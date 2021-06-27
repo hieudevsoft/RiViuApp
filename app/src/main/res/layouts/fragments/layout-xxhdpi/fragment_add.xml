@@ -86,6 +86,7 @@
         </LinearLayout>
 
         <ScrollView
+            android:layout_marginBottom="?attr/actionBarSize"
             android:id="@+id/scrollView"
             android:fillViewport="true"
             android:layout_width="match_parent"
@@ -114,8 +115,8 @@
                     <LinearLayout
                         android:clickable="true"
                         android:id="@+id/addPicture"
-                        android:layout_width="@dimen/custom_pic_size"
-                        android:layout_height="@dimen/custom_pic_size"
+                        android:layout_width="@dimen/custom_pic_size_xxhdpi"
+                        android:layout_height="@dimen/custom_pic_size_xxhdpi"
                         android:background="@drawable/custom_background_layout_add"
                         android:gravity="center"
                         android:orientation="vertical"
@@ -128,8 +129,8 @@
                         app:layout_constraintVertical_bias="0.0">
 
                         <ImageView
-                            android:layout_width="@dimen/picture_size"
-                            android:layout_height="@dimen/picture_size"
+                            android:layout_width="@dimen/picture_size_xxhdpi"
+                            android:layout_height="@dimen/picture_size_xxhdpi"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_add_picture" />
 
@@ -144,8 +145,8 @@
                     <LinearLayout
                         android:clickable="true"
                         android:id="@+id/addVideo"
-                        android:layout_width="@dimen/custom_pic_size"
-                        android:layout_height="@dimen/custom_pic_size"
+                        android:layout_width="@dimen/custom_pic_size_xxhdpi"
+                        android:layout_height="@dimen/custom_pic_size_xxhdpi"
                         android:background="@drawable/custom_background_layout_add"
                         android:gravity="center"
                         android:orientation="vertical"
@@ -158,8 +159,8 @@
                         app:layout_constraintVertical_bias="0.0">
 
                         <ImageView
-                            android:layout_width="@dimen/picture_size"
-                            android:layout_height="@dimen/picture_size"
+                            android:layout_width="@dimen/picture_size_xxhdpi"
+                            android:layout_height="@dimen/picture_size_xxhdpi"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_add_video" />
 
@@ -174,8 +175,8 @@
                     <LinearLayout
                         android:clickable="true"
                         android:id="@+id/youtube"
-                        android:layout_width="@dimen/custom_pic_size"
-                        android:layout_height="@dimen/custom_pic_size"
+                        android:layout_width="@dimen/custom_pic_size_xxhdpi"
+                        android:layout_height="@dimen/custom_pic_size_xxhdpi"
                         android:layout_toEndOf="@+id/addVideo"
                         android:background="@drawable/custom_background_layout_add"
                         android:gravity="center"
@@ -190,8 +191,8 @@
                         app:layout_constraintVertical_bias="0.0">
 
                         <ImageView
-                            android:layout_width="@dimen/picture_size"
-                            android:layout_height="@dimen/picture_size"
+                            android:layout_width="@dimen/picture_size_xxhdpi"
+                            android:layout_height="@dimen/picture_size_xxhdpi"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_youtube" />
 
@@ -228,7 +229,7 @@
                         android:inputType="text|textMultiLine"
                         app:layout_constraintVertical_bias="0"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:background="@android:color/transparent"
                         android:hint="Cho Riviu một tiêu đề"
@@ -292,7 +293,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:textStyle="bold"
                         android:inputType="text|textMultiLine"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:background="@android:color/transparent"
                         android:hint="+Thêm Hashtag"
@@ -318,7 +319,7 @@
                         android:layout_height="wrap_content"
                         android:text="Địa điểm"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -332,7 +333,7 @@
                         android:drawablePadding="12dp"
                         android:fontFamily="sans-serif-black"
                         android:text="Nhấn vào để chọn địa điểm"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -349,7 +350,7 @@
                         android:layout_height="wrap_content"
                         android:text="Đánh giá"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <RelativeLayout
@@ -367,7 +368,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:text="Tổng thể :"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <RatingBar
                             android:layout_centerVertical="true"
@@ -390,7 +391,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="@dimen/margin"
                             android:text="@{statusRating}"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </RelativeLayout>
 
                 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.authencation.cloneriviu.adapters
+package com.authencation.cloneriviu.adapters.Items
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -24,7 +24,7 @@ class ItemOldLocationAdapter(private val context: Context):
             itemView.findViewById<TextView>(R.id.tvOldLocation).text = item
         }
         companion object{
-            fun from(viewGroup: ViewGroup):MyViewHolder{
+            fun from(viewGroup: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(viewGroup.context)
                 val view = layoutInflater.inflate(R.layout.item_old_address,null)
                 return MyViewHolder(view)

@@ -37,5 +37,12 @@
     <style name="MyBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/SheetDialog</item>
     </style>
+    <style name="CustomRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_rating_bar</item>
+        <item name="android:minHeight">19dp</item>
+        <item name="android:minWidth">19dp</item>
+        <item name="android:maxHeight">47dp</item>
+        <item name="android:maxWidth">47dp</item>
+    </style>
 
 </resources>

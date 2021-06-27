@@ -8,7 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FF6600</color>
+    <color name="orange_900">#EFF28D4A</color>
+    <color name="orange_pure">#FF7014</color>
+    <color name="orange_200">#FFF7F1</color>
     <color name="gray">#DCD7D2D0</color>
+    <color name="gray_900">#ACACAC</color>
+    <color name="gray_700">#F7F7F7</color>
+    <color name="gray_800">#F4F3F3</color>
     <color name="gray_black">#DC595755</color>
     <color name="facebook">#244698</color>
     <color name="star">#ffff00</color>

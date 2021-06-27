@@ -1,4 +1,4 @@
-package com.authencation.cloneriviu.adapters
+package com.authencation.cloneriviu.adapters.Items
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -33,7 +33,7 @@ class ItemPopularAddressAdapter(
             itemView.findViewById<TextView>(R.id.tvAddress).text = item
         }
         companion object{
-            fun from(viewGroup: ViewGroup):MyViewHolder{
+            fun from(viewGroup: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(viewGroup.context)
                 val view = layoutInflater.inflate(R.layout.item_popular_address,null)
                 return MyViewHolder(view)

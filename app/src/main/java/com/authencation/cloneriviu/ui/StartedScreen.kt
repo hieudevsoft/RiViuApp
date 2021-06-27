@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.support.Support
 
+
 class StartedScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

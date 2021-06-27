@@ -6,10 +6,9 @@ import android.util.Log
 import android.view.Window
 import android.widget.ImageView
 import android.widget.ScrollView
-import com.authencation.cloneriviu.adapters.ItemPopularAddressAdapter
+import com.authencation.cloneriviu.adapters.Items.ItemPopularAddressAdapter
 import com.authencation.cloneriviu.support.Support
 import com.authencation.cloneriviu.support.WidgetOwner
-import kotlin.math.log
 
 class SearchLocation(
     private val window: Window,

@@ -1,4 +1,4 @@
-package com.authencation.cloneriviu.adapters
+package com.authencation.cloneriviu.adapters.Items
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,33 +6,30 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.authencation.cloneriviu.databinding.ItemOptionsOneBinding
-import com.authencation.cloneriviu.databinding.ItemOptionsTwoBinding
 import com.authencation.cloneriviu.model.ItemOptionsOne
-import com.authencation.cloneriviu.model.ItemOptionsTwo
 import com.authencation.cloneriviu.util.OptionsOneDiffUtil
-import com.authencation.cloneriviu.util.OptionsTwoDiffUtil
 
 
-class ItemOptionsTwoAdapter: RecyclerView.Adapter<ItemOptionsTwoAdapter.MyViewHolder>() {
+class ItemOptionsAdapter: RecyclerView.Adapter<ItemOptionsAdapter.MyViewHolder>() {
     private val TAG = "ItemOptionsAdapter"
-    private var itemOptionsTwo = emptyList<ItemOptionsTwo>()
-    class MyViewHolder(private val binding:ItemOptionsTwoBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(item:ItemOptionsTwo){
+    private var itemOptionsOne = emptyList<ItemOptionsOne>()
+    class MyViewHolder(private val binding:ItemOptionsOneBinding):RecyclerView.ViewHolder(binding.root) {
+        fun bind(item:ItemOptionsOne){
             binding.data = item
             binding.executePendingBindings()
         }
         companion object{
-            fun from(viewGroup: ViewGroup):MyViewHolder{
+            fun from(viewGroup: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(viewGroup.context)
-                val binding = ItemOptionsTwoBinding.inflate(layoutInflater,viewGroup,false)
+                val binding = ItemOptionsOneBinding.inflate(layoutInflater,viewGroup,false)
                 return MyViewHolder(binding)
             }
         }
     }
-    fun setData(newList:List<ItemOptionsTwo>){
-        val diffUtilCallBack = OptionsTwoDiffUtil(itemOptionsTwo,newList)
+    fun setData(newList:List<ItemOptionsOne>){
+        val diffUtilCallBack = OptionsOneDiffUtil(itemOptionsOne,newList)
         val diffResult = DiffUtil.calculateDiff(diffUtilCallBack)
-        itemOptionsTwo = newList
+        itemOptionsOne = newList
         diffResult.dispatchUpdatesTo(this)
     }
     override fun onCreateViewHolder(
@@ -44,11 +41,11 @@ class ItemOptionsTwoAdapter: RecyclerView.Adapter<ItemOptionsTwoAdapter.MyViewHo
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: bindView ")
-        holder.bind(itemOptionsTwo[position])
+        holder.bind(itemOptionsOne[position])
     }
 
     override fun getItemCount(): Int {
-        return itemOptionsTwo.size
+        return itemOptionsOne.size
     }
 
 }
