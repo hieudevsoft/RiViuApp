@@ -1,19 +1,18 @@
 package com.authencation.cloneriviu.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.databinding.FragmentNotificationsBinding
-import com.authencation.cloneriviu.databinding.FragmentProfileBinding
 import com.authencation.cloneriviu.extensions.observeOnce
 import com.authencation.cloneriviu.networks.GoogleApi
 import com.authencation.cloneriviu.networks.RepositoryLogin
@@ -21,14 +20,15 @@ import com.authencation.cloneriviu.support.BottomSheetDialogLogin
 import com.authencation.cloneriviu.support.DataStoreLocal
 import com.authencation.cloneriviu.support.LogoutResultClient
 import com.authencation.cloneriviu.support.WidgetOwner
+import com.authencation.cloneriviu.ui.HomeScreen
 import com.authencation.cloneriviu.viewmodels.LoginViewModel
 import com.authencation.cloneriviu.viewmodels.factories.LoginViewModelsFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class NotificationsFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListener {
-    private val TAG = "NotificationsFragment" 
+class NotificationsFragment : Fragment(), BottomSheetDialogLogin.BottomSheetListener,HomeScreen.HomeScreenListener {
+    private val TAG = "NotificationsFragment"
     lateinit var dataStoreLocal: DataStoreLocal
     private lateinit var googleApi: GoogleApi
     lateinit var _binding: FragmentNotificationsBinding
@@ -50,10 +50,11 @@ class NotificationsFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListe
         onSubscribes()
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.layoutLogin.findViewById<Button>(R.id.btnLogin).setOnClickListener {
             googleApi.checkPreConditions()
-            if(GoogleApi.check) loginBoxCreate()
+            if (GoogleApi.check) loginBoxCreate()
         }
         binding.btnLogout.setOnClickListener {
             dataStoreLocal.readOptionLogin.asLiveData().observeOnce(viewLifecycleOwner, { it ->
@@ -63,7 +64,7 @@ class NotificationsFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListe
                     when (it) {
                         is LogoutResultClient.Success -> {
                             loginViewModel.didLoginSuccessFully.value = false
-                            lifecycleScope.launch(Dispatchers.IO){
+                            lifecycleScope.launch(Dispatchers.IO) {
                                 dataStoreLocal.saveOptionLogin(0)
                             }
                             WidgetOwner.gone(binding.btnLogout)
@@ -88,8 +89,10 @@ class NotificationsFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListe
             if (it) {
                 WidgetOwner.gone(binding.layoutLogin)
                 WidgetOwner.visibile(binding.btnLogout)
+                WidgetOwner.visibile(binding.mainLayoutNotification)
             } else {
                 WidgetOwner.gone(binding.btnLogout)
+                WidgetOwner.gone(binding.mainLayoutNotification)
                 WidgetOwner.visibile(binding.layoutLogin)
             }
         })
@@ -113,5 +116,12 @@ class NotificationsFragment : Fragment(),BottomSheetDialogLogin.BottomSheetListe
         loginViewModel.didLoginSuccessFully.value = state
     }
 
+    override fun onLoginGoogle(state: Boolean) {
+        loginViewModel.didLoginSuccessFully.value = state
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is HomeScreen) context.homeScreenListener = this
+    }
 
 }
