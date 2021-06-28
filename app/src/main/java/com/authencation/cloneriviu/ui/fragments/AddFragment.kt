@@ -41,6 +41,15 @@ class AddFragment : Fragment() {
                    0->binding.tvCountCharacters.text ="Nội dung không quá 200000 kí tự"
                    else -> binding.tvCountCharacters.text ="Bạn đã nhập ${s?.length} kí tự"
                }
+                 requireActivity()
+                     requireActivity().window.decorView.apply {
+                                 systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                         or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                         or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                         or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                         or View.SYSTEM_UI_FLAG_FULLSCREEN
+                                         or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+                 }
             }
 
             override fun afterTextChanged(s: Editable?) {

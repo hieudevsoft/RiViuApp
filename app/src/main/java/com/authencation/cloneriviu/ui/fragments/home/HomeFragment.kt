@@ -23,6 +23,7 @@ import com.authencation.cloneriviu.receiver.NetworkReciever
 import com.authencation.cloneriviu.support.DataStoreLocal
 import com.authencation.cloneriviu.support.Support
 import com.authencation.cloneriviu.support.WidgetOwner
+import com.google.android.material.appbar.AppBarLayout
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 
@@ -34,7 +35,7 @@ class HomeFragment : Fragment() {
     lateinit var itemOptionsTwoAdapter: ItemOptionsTwoAdapter
     lateinit var dataStoreLocal: DataStoreLocal
     lateinit var viewPagerAdapter: FragmentPagerItemAdapter
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +52,12 @@ class HomeFragment : Fragment() {
             .add("Follow",FollowFragment::class.java)
             .create()
         )
-        return binding?.root
+        binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            Log.d(TAG, "onOffsetChanged: $verticalOffset, ${appBarLayout?.measuredHeight}, ${appBarLayout?.height}")
+            binding.refreshLayout.isEnabled = verticalOffset+appBarLayout.measuredHeight != 0
+        })
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

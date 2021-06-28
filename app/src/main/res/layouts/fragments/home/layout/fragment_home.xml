@@ -19,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        android:background="@color/white"
+        android:descendantFocusability="blocksDescendants"
         android:layout_marginBottom="?attr/actionBarSize"
         tools:context=".HomeFragment">
 
@@ -115,156 +117,213 @@
                         android:text="Tìm Riviu, địa điểm,..."
                         android:textColor="@color/gray_black" />
                 </LinearLayout>
-
-                <androidx.core.widget.NestedScrollView
-                    android:id="@+id/nestedScrollView"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/marginTop"
-                    android:fillViewport="true"
-                    android:measureAllChildren="true"
-                    android:scrollbars="none"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/containerSearch">
-
-                    <LinearLayout
-                        android:orientation="vertical"
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
+                        app:layout_constraintTop_toBottomOf="@id/containerSearch"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         android:layout_width="match_parent"
                         android:layout_height="0dp">
-                        <RelativeLayout
+                        <com.google.android.material.appbar.AppBarLayout
+                            android:id="@+id/appbar"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp">
-                            <TextView
-                                android:layout_alignParentBottom="true"
-                                android:fontFamily="sans-serif-medium"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:text="Hà Nội ăn gì ? - uống gì?"
-                                android:layout_alignParentStart="true"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                            <TextView
-                                android:id="@+id/tvDetails"
-                                android:textStyle="bold"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/orange"
-                                android:textAllCaps="false"
-                                android:text="Xem thêm"
-                                android:background="@android:color/transparent"
-                                android:layout_alignParentEnd="true"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        </RelativeLayout>
-                        <com.todkars.shimmer.ShimmerRecyclerView
-                            android:id="@+id/shimmerOptionsOne"
-                            app:shimmer_recycler_base_color="@color/black"
-                            app:shimmer_recycler_item_count="2"
-                            app:shimmer_recycler_repeat_mode="restart"
-                            app:shimmer_recycler_layout="@layout/shimmer_layout_options"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp">
-                        <TextView
-                            android:layout_alignParentBottom="true"
-                            android:fontFamily="sans-serif-medium"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:text="Lăn vào bếp"
-                            android:layout_alignParentStart="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <TextView
-                            android:id="@+id/tvDetails2"
-                            android:textStyle="bold"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerVertical="true"
-                            android:textColor="@color/orange"
-                            android:textAllCaps="false"
-                            android:text="Xem thêm"
+                            app:elevation="0dp"
                             android:background="@android:color/transparent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </RelativeLayout>
-                    <com.todkars.shimmer.ShimmerRecyclerView
-                        android:id="@+id/shimmerOptionsTwo"
-                        app:shimmer_recycler_base_color="@color/black"
-                        app:shimmer_recycler_item_count="2"
-                        app:shimmer_recycler_repeat_mode="restart"
-                        app:shimmer_recycler_layout="@layout/shimmer_layout_options"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                        <LinearLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
+                            android:fitsSystemWindows="true"
                             android:layout_height="wrap_content">
-                            <FrameLayout
-                                android:layout_gravity="center"
-                                android:layout_width="wrap_content"
+                            <com.google.android.material.appbar.CollapsingToolbarLayout
+                                android:fitsSystemWindows="true"
+                                android:id="@+id/collapsing_toolbar_layout"
+                                app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
-                            <TextView
-                                android:textAlignment="center"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:padding="@dimen/marginEnd"
-                                android:textColor="@color/gray_black"
-                                android:textSize="16sp"
-                                android:fontFamily="sans-serif-medium"
-                                android:text="Khám phá"
-                                android:id="@+id/tvExplore"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                                <View
-                                    visibilityDot="@{isCheckedExplore}"
-                                    android:id="@+id/view_dot_explore"
-                                    android:layout_gravity="right|top"
-                                    android:background="@drawable/custom_dot"
-                                    android:layout_width="5dp"
-                                    android:layout_height="5dp"/>
-                            </FrameLayout>
-                            <Space
-                                android:layout_width="@dimen/marginEnd"
-                                android:layout_height="wrap_content"/>
-                            <FrameLayout
-                                android:layout_gravity="center"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            app:layout_constraintVertical_bias="0"
+                            android:id="@+id/lyContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toTopOf="@id/viewPager"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <RelativeLayout
+                                android:id="@+id/lyTextOptionOne"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
                                 <TextView
-                                    android:textAlignment="center"
-                                    android:gravity="center"
-                                    android:layout_gravity="center"
-                                    android:textColor="@color/gray_black"
-                                    android:padding="@dimen/marginEnd"
-                                    android:textSize="16sp"
-                                    android:fontFamily="sans-serif-medium"
-                                    android:text="Theo dõi"
-                                    android:id="@+id/tvFollow"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
-                                <View
-                                    visibilityDot="@{isCheckedFollow}"
-                                    android:id="@+id/view_dot_follow"
-                                    android:layout_gravity="right|top"
-                                    android:background="@drawable/custom_dot"
-                                    android:layout_width="5dp"
-                                    android:layout_height="5dp"/>
-                            </FrameLayout>
-                        </LinearLayout>
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:text="Hà Nội ăn gì ? - uống gì?"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvDetails"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@android:color/transparent"
+                                    android:text="Xem thêm"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <com.todkars.shimmer.ShimmerRecyclerView
+                                android:id="@+id/shimmerOptionsOne"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/lyTextOptionOne"
+                                app:shimmer_recycler_base_color="@color/black"
+                                app:shimmer_recycler_item_count="2"
+                                app:shimmer_recycler_layout="@layout/shimmer_layout_options"
+                                app:shimmer_recycler_repeat_mode="restart" />
+
+                            <RelativeLayout
+                                android:id="@+id/lyTextOptionTwo"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/shimmerOptionsOne">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:text="Lăn vào bếp"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvDetails2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@android:color/transparent"
+                                    android:text="Xem thêm"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <com.todkars.shimmer.ShimmerRecyclerView
+                                android:id="@+id/shimmerOptionsTwo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/lyTextOptionTwo"
+                                app:shimmer_recycler_base_color="@color/black"
+                                app:shimmer_recycler_item_count="2"
+                                app:shimmer_recycler_layout="@layout/shimmer_layout_options"
+                                app:shimmer_recycler_repeat_mode="restart" />
+                            <LinearLayout
+                                android:id="@+id/lyText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="20dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/shimmerOptionsTwo">
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tvExplore"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="sans-serif-medium"
+                                        android:gravity="center"
+                                        android:padding="@dimen/marginEnd"
+                                        android:text="Khám phá"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/gray_black"
+                                        android:textSize="16sp" />
+
+                                    <View
+                                        android:id="@+id/view_dot_explore"
+                                        visibilityDot="@{isCheckedExplore}"
+                                        android:layout_width="5dp"
+                                        android:layout_height="5dp"
+                                        android:layout_gravity="right|top"
+                                        android:background="@drawable/custom_dot" />
+                                </FrameLayout>
+
+                                <Space
+                                    android:layout_width="@dimen/marginEnd"
+                                    android:layout_height="wrap_content" />
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tvFollow"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="sans-serif-medium"
+                                        android:gravity="center"
+                                        android:padding="@dimen/marginEnd"
+                                        android:text="Theo dõi"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/gray_black"
+                                        android:textSize="16sp" />
+
+                                    <View
+                                        android:id="@+id/view_dot_follow"
+                                        visibilityDot="@{isCheckedFollow}"
+                                        android:layout_width="5dp"
+                                        android:layout_height="5dp"
+                                        android:layout_gravity="right|top"
+                                        android:background="@drawable/custom_dot" />
+                                </FrameLayout>
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                <Toolbar
+                                    android:id="@+id/toolbar"
+                                    android:layout_width="match_parent"
+                                    app:layout_collapseMode="pin"
+                                    android:layout_height="0dp"/>
+                            </com.google.android.material.appbar.CollapsingToolbarLayout>
+                        </com.google.android.material.appbar.AppBarLayout>
+
                         <androidx.viewpager.widget.ViewPager
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
                             android:id="@+id/viewPager"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-                </androidx.core.widget.NestedScrollView>
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginBottom="@dimen/marginBottomNavigationBottom"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/lyContainer" />
+
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </FrameLayout>

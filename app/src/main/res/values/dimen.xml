@@ -2,6 +2,7 @@
 <resources>
     <dimen name="margin">10dp</dimen>
     <dimen name="picture_size">36dp</dimen>
+    <dimen name="picture_avatar_small">12dp</dimen>
     <dimen name="picture_size_xxhdpi">36dp</dimen>
     <dimen name="icon_small_size">12dp</dimen>
     <dimen name="custom_pic_size">100dp</dimen>
@@ -11,4 +12,5 @@
     <dimen name="marginTop">10dp</dimen>
     <dimen name="size_dot">5dp</dimen>
     <dimen name="marginEnd">6dp</dimen>
+    <dimen name="marginBottomNavigationBottom">100dp</dimen>
 </resources>
