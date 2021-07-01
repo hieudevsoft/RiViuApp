@@ -3,12 +3,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--Facebook setup-->
+    <!--Facebook setup-->
     <string name="facebook_app_id">2958418484405913</string>
     <string name="fb_login_protocol_scheme">fb2958418484405913</string>
 
 
-<!--Add Fragment-->
+    <!--Add Fragment-->
     <string name="text">Bạn cần phải <b>đăng nhập</b> để có thể đăng bài \nRiviu nhé</string>
 
 

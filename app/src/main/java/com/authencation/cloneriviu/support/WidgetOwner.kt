@@ -1,6 +1,7 @@
 package com.authencation.cloneriviu.support
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.networks.RepositoryLogin
 import com.authencation.cloneriviu.networks.SignInWithFaceBook
 import com.authencation.cloneriviu.networks.SignInWithGoogle
+import com.authencation.cloneriviu.ui.LoginScreen
 import com.authencation.cloneriviu.viewmodels.LoginViewModel
 import com.authencation.cloneriviu.viewmodels.factories.LoginViewModelsFactory
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -151,6 +153,9 @@ object WidgetOwner {
                 loginViewModel.createInstance(2)
                 SignInWithGoogle.getInstance().createRequest(requireActivity())
                 SignInWithGoogle.getInstance().signIn(requireActivity())
+            }
+            btnOthers.setOnClickListener {
+                startActivity(Intent(this.context,LoginScreen::class.java))
             }
         }
     }

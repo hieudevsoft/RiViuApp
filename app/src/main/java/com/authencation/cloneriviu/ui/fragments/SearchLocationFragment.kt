@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.authencation.cloneriviu.R
 import com.authencation.cloneriviu.adapters.Items.ItemOldLocationAdapter
 import com.authencation.cloneriviu.adapters.Items.ItemPopularAddressAdapter
 import com.authencation.cloneriviu.bussiness_logics.SearchLocation
@@ -61,6 +63,9 @@ class SearchLocationFragment : Fragment() {
                 binding.scrollViewAddress
             )
         )
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_searchLocationFragment_to_homeFragment)
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 

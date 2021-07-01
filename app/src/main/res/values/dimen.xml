@@ -13,4 +13,5 @@
     <dimen name="size_dot">5dp</dimen>
     <dimen name="marginEnd">6dp</dimen>
     <dimen name="marginBottomNavigationBottom">100dp</dimen>
+    <dimen name="paddingEdt">14dp</dimen>
 </resources>
