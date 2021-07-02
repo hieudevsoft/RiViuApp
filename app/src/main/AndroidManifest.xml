@@ -14,16 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CloneRiviu"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.LoginScreen"></activity>
-        <activity android:name=".ui.HomeScreen">
+        <activity android:name=".ui.LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.HomeScreen">
+        </activity>
         <activity android:name=".ui.OnboardingScreen" />
         <activity android:name=".ui.StartedScreen">
+
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -55,6 +57,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.registers.SendOtpScreen"
+                    android:screenOrientation="portrait"/>
+        <activity android:name=".ui.registers.VerifyOtpScreen"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

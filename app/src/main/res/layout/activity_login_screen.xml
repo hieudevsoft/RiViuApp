@@ -41,6 +41,7 @@
                 android:src="@drawable/image_header_login" />
 
             <ImageButton
+                android:id="@+id/imgBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
