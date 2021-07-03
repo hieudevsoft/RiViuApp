@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CloneRiviu"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.LoginScreen"></activity>
+        <activity android:name=".ui.LoginScreen">
+
+        </activity>
         <activity android:name=".ui.HomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
