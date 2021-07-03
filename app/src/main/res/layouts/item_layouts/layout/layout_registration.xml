@@ -12,28 +12,14 @@
         android:layout_weight="15"
         >
         <ImageView
+            android:id="@+id/imgBack"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
             />
-            <Button
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintWidth_percent="0.18"
-                app:layout_constraintHeight_percent="0.4"
-                android:background="@drawable/custom_button_next"
-                android:text="Tiếp theo"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                android:textColor="@color/text_gray"
-                >
-            </Button>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -76,6 +62,7 @@
         android:layout_weight="5">
 
         <EditText
+            android:id="@+id/edtPhone"
             android:importantForAutofill="no"
             android:inputType="phone"
             android:layout_width="match_parent"
@@ -83,7 +70,7 @@
             android:background="@drawable/rounded_edittext"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:hint="Ví dụ: 0909 123 123"
+            android:hint="Ví dụ: 0909123123"
             android:textColor="@color/text_gray"
             android:textSize="14sp" />
 
@@ -92,12 +79,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="40"/>
-    <Button
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/btnSendOTP"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
+        app:spinning_bar_color="@color/white"
+        app:spinning_bar_width="4dp"
+        app:spinning_bar_padding="4dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:background="@drawable/custom_button_next"
-        android:backgroundTint="@color/blue"
         android:text="Gửi mã xác thực qua tin nhắn SMS"
         android:textColor="@color/white"
         android:textSize="16sp"

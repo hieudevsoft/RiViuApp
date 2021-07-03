@@ -15,25 +15,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
             />
-            <Button
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintWidth_percent="0.18"
-                app:layout_constraintHeight_percent="0.4"
-                android:background="@drawable/custom_button_next"
-                android:text="Tiếp theo"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                android:textColor="@color/text_gray"
-                >
-            </Button>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -77,79 +62,18 @@
         android:weightSum="80"
         android:orientation="horizontal">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            />
-        <EditText
-            android:layout_marginLeft="8dp"
-            android:importantForAutofill="no"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="@drawable/confirm_edittext"/>
-        <EditText
-            android:layout_marginLeft="8dp"
-            android:importantForAutofill="no"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="@drawable/confirm_edittext"/>
-        <EditText
-            android:layout_marginLeft="8dp"
-            android:importantForAutofill="no"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="@drawable/confirm_edittext"/>
-        <EditText
-            android:layout_marginLeft="8dp"
-            android:importantForAutofill="no"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="@drawable/confirm_edittext"/>
-        <EditText
-            android:layout_marginLeft="8dp"
-            android:importantForAutofill="no"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="@drawable/confirm_edittext"/>
-        <EditText
-            android:layout_marginLeft="8dp"
-            android:importantForAutofill="no"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:background="@drawable/confirm_edittext"/>
-        <View
-            android:layout_marginLeft="8dp"
-
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            />
-
     </LinearLayout>
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tvResend"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="6"
+        android:layout_gravity="center"
         android:text="Gửi lại"
         android:textColor="@color/bold_orange"
         android:textStyle="bold"
         android:textSize="16dp"
         android:gravity="center"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"/>
     <TextView
         android:layout_gravity="center"
         android:layout_width="wrap_content"

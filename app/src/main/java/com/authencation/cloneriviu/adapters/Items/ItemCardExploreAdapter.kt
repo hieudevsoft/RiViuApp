@@ -18,7 +18,7 @@ import kotlin.random.Random
 
 class ItemCardExploreAdapter: RecyclerView.Adapter<ItemCardExploreAdapter.MyViewHolder>() {
     private val TAG = "ItemOptionsAdapter"
-    private var items = emptyList<ItemPostExplore>()
+    var items = mutableListOf<ItemPostExplore>()
     class MyViewHolder(private val binding:ViewDataBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(item:ItemPostExplore){
             if(binding is ItemLayoutExploreBinding)
@@ -45,11 +45,16 @@ class ItemCardExploreAdapter: RecyclerView.Adapter<ItemCardExploreAdapter.MyView
             }
         }
     }
-    fun setData(newList:List<ItemPostExplore>){
-        val diffUtilCallBack = PostExploreDiffUtil(items,newList)
-        val diffResult = DiffUtil.calculateDiff(diffUtilCallBack)
-        items = newList
-        diffResult.dispatchUpdatesTo(this)
+    fun setData(newList:MutableList<ItemPostExplore>){
+        if(items is List<ItemPostExplore> && newList is List<ItemPostExplore>){
+            val itemsDiffUtil = items as List<ItemPostExplore>
+            val newListDiffUtil = newList as List<ItemPostExplore>
+            val diffUtilCallBack = PostExploreDiffUtil(itemsDiffUtil,newListDiffUtil)
+            val diffResult = DiffUtil.calculateDiff(diffUtilCallBack)
+            items.clear()
+            items.addAll(newList)
+            diffResult.dispatchUpdatesTo(this)
+        }
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,

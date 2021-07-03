@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="errorText"
+            type="java.lang.String"/>
+        <variable
+            name="showError"
+            type="java.lang.Boolean" />
+        <variable
+            name="backGroundButton"
+            type="java.lang.Boolean" />
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,6 +41,7 @@
                 android:src="@drawable/image_header_login" />
 
             <ImageButton
+                android:id="@+id/imgBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
@@ -64,7 +76,7 @@
                     android:id="@+id/edtUserPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text|phone"
+                    android:inputType="text"
                     android:fontFamily="sans-serif-light"
                     android:hint="Số điện thoại hoặc username"
                     android:textCursorDrawable="@drawable/custom_cursor"
@@ -95,6 +107,7 @@
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
+                android:visibility="@{showError?view.VISIBLE:view.GONE}"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:layout_marginTop="6dp"
@@ -108,7 +121,7 @@
                     android:layout_height="match_parent"/>
                 <TextView
                     android:letterSpacing="0.08"
-                    android:text="Display error here"
+                    android:text="@{errorText}"
                     android:layout_gravity="center"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="10sp"
@@ -118,7 +131,7 @@
             <Button
                 android:id="@+id/btnLogin"
                 android:textColor="@color/white"
-                android:background="@drawable/custom_login_button_enabled"
+                loadBackgroundButton="@{backGroundButton}"
                 android:textSize="16sp"
                 android:textAllCaps="false"
                 android:text="Đăng nhập"
