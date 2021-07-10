@@ -3,7 +3,7 @@ package com.authencation.cloneriviu.networks
 import com.authencation.cloneriviu.model.BaseLogin
 
 
-class SignInOptionsFactory() {
+class SignInOptionsFactory {
     companion object {
         @JvmStatic
         lateinit var loginInstance: BaseLogin

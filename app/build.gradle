@@ -120,4 +120,10 @@ dependencies {
 
     //Loading button
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
+
+    //Pin Library
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.2'
+
+    //Loading dot horizontally
+    implementation 'com.github.justzak:dilatingdotsprogressbar:1.0.1'
 }

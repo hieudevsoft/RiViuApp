@@ -60,6 +60,7 @@ class SendOtpScreen : AppCompatActivity() {
                         buttonSendOTP.revertAnimation()
                         startActivity(Intent(this@SendOtpScreen,VerifyOtpScreen::class.java).also {
                             it.putExtra("phoneNumber",edtPhone.text.toString())
+                            it.putExtra("verificationId",p0)
                         })
                         overridePendingTransition(R.anim.nav_default_enter_anim,R.anim.nav_default_exit_anim)
                         super.onCodeSent(p0, p1)

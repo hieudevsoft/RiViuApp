@@ -15,11 +15,7 @@
         android:theme="@style/Theme.CloneRiviu"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.LoginScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.HomeScreen">
         </activity>
@@ -58,9 +54,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.registers.SendOtpScreen"
-                    android:screenOrientation="portrait"/>
+                    android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.registers.VerifyOtpScreen"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

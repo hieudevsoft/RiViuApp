@@ -5,25 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="100"
+    android:layout_gravity="center"
     android:padding="10dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="15"
-        >
-        <ImageView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="20"
         android:id="@+id/blank_sdt">
         <TextView
             app:layout_constraintTop_toTopOf="parent"
@@ -57,31 +45,63 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="8"
         android:weightSum="80"
-        android:orientation="horizontal">
-
+        android:orientation="vertical"
+        >
+        <com.mukesh.OtpView
+            android:focusable="true"
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@android:color/black"
+            app:OtpItemCount="6"
+            app:OtpViewType="rectangle"
+            app:OtpItemRadius="8dp"
+            app:OtpLineColor="@color/orange_pure"
+            app:OtpCursorWidth="2dp"
+            app:OtpCursorColor="@color/orange"
+            />
+        <TextView
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginTop="@dimen/marginTop"
+            android:textSize="16sp"
+            android:id="@+id/tvTime"
+            android:text="time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/tvResend"
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/btnResend"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="6"
+        app:spinning_bar_color="@color/white"
+        app:spinning_bar_width="4dp"
+        app:spinning_bar_padding="4dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
         android:text="Gửi lại"
-        android:textColor="@color/bold_orange"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        android:gravity="center"/>
-    <TextView
+        android:backgroundTint="@color/orange"
+        android:background="@drawable/custom_button_next"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textAllCaps="false"/>
+    <com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar
+        android:layout_marginTop="@dimen/marginTop"
+        android:id="@+id/progressBar"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:text="Tôi đã có tài khoản"
-        android:gravity="center|bottom"
+        android:layout_height="wrap_content"
+        android:radius="5dp"
+        android:color="@color/orange"
+        app:dd_numDots="4"
+        app:dd_scaleMultiplier="2"
+        app:dd_animationDuration="500"
+        app:dd_horizontalSpacing="8dp"
         />
-
 
 </LinearLayout>
